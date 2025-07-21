@@ -1,0 +1,573 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --background-color: #121212;
+    --text-color: #EAEAEA;
+    --primary-accent: #8A2BE2; /* A vibrant purple */
+    --secondary-accent: #C072E0; /* A lighter purple for glows */
+    --surface-color: rgba(255, 255, 255, 0.05);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    font-family: var(--font-family);
+    color: var(--text-color);
+}
+
+/* --- Main Layout & Header --- */
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.header {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-logo .ai-text {
+    font-weight: 800;
+}
+
+.header-logo .leaning-tool-text {
+    font-weight: 300;
+    color: rgba(234, 234, 234, 0.8);
+}
+
+/* --- Hero Section & Microphone --- */
+.hero-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    padding-bottom: 5rem;
+}
+
+.hero-title {
+    font-size: clamp(2.5rem, 8vw, 5rem); /* Responsive font size */
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+}
+
+.mic-button-container {
+    margin-top: 2rem;
+}
+
+.mic-button {
+    width: auto;
+    height: auto;
+    min-width: 150px;
+    padding: 1rem 2rem;
+    border-radius: 50px; /* Pill shape */
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.stop-button {
+    min-width: 150px;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    background-color: #C70039; /* A clear red color */
+    color: white;
+    box-shadow: 0 0 20px rgba(200, 0, 57, 0.6);
+    transition: background-color 0.2s, transform 0.2s;
+    animation: pulse 2s infinite; /* You can reuse the pulse animation */
+}
+
+.stop-button:hover {
+    background-color: #900C3F;
+    transform: scale(1.05);
+}
+
+.mic-button:hover {
+    transform: scale(1.05);
+}
+
+.mic-pulse {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(192, 114, 224, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 25px rgba(192, 114, 224, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(192, 114, 224, 0);
+    }
+}
+
+.voice-output-text {
+    margin-top: 1.5rem;
+    color: rgba(234, 234, 234, 0.7);
+    font-size: 1rem;
+    min-height: 1.2rem;
+}
+
+.ai-response-area {
+    margin-top: 2rem;
+    background-color: var(--surface-color);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    border: 1px solid var(--border-color);
+    text-align: left;
+}
+
+/* --- Feature Sections (Grammar, Chat) --- */
+.feature-section {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 6rem;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.feature-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.input-field {
+    width: 100%;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+
+textarea.input-field {
+    resize: vertical;
+}
+
+/* --- Chat Section Specifics --- */
+.chat-container {
+    width: 100%;
+    height: 400px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chat-message {
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.5;
+}
+
+.chat-message.user {
+    background-color: var(--primary-accent);
+    color: white;
+    border-bottom-right-radius: 0;
+    align-self: flex-end;
+}
+
+.chat-message.ai {
+    background-color: #333;
+    border-bottom-left-radius: 0;
+    align-self: flex-start;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 1rem;
+}
+
+.chat-send-button {
+    background-color: var(--primary-accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.chat-send-button:hover {
+    background-color: var(--secondary-accent);
+}
+
+/* --- Aurora Glow Background Effects --- */
+.aurora-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.2;
+    z-index: -1;
+}
+
+.aurora-glow-1 {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--secondary-accent), transparent 60%);
+    transform: translate(-80%, -80%);
+}
+
+.aurora-glow-2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, #5D3FD3, transparent 60%);
+    transform: translate(40%, -20%);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    .main-container {
+        padding: 1rem;
+    }
+    .feature-section {
+        margin-top: 4rem;
+        padding: 1rem;
+    }
+    .chat-container {
+        height: 300px;
+    }
+}
+
+/* In HomePage.css */
+
+/* --- General Styles for New Sections --- */
+.feature-section {
+    width: 100%;
+    max-width: 800px;
+    margin-top: 4rem;
+    padding: 2rem;
+    box-sizing: border-box;
+    border-top: 1px solid var(--border-color);
+}
+
+.feature-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+.action-button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    background-color: var(--primary-accent);
+    color: white;
+    border: none;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.action-button:hover {
+    background-color: var(--secondary-accent);
+}
+
+/* --- Image Preview --- */
+.image-preview {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 10px;
+    margin-top: 1rem;
+    border: 1px solid var(--border-color);
+}
+
+/* --- Chat Section Styles --- */
+.chat-container {
+    width: 100%;
+    height: 400px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.chat-message {
+    padding: 0.75rem 1rem;
+    border-radius: 15px;
+    max-width: 80%;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.chat-message.user {
+    background-color: var(--primary-accent);
+    color: white;
+    border-bottom-right-radius: 5px;
+    align-self: flex-end;
+}
+
+.chat-message.ai {
+    background-color: #333;
+    border-bottom-left-radius: 5px;
+    align-self: flex-start;
+}
+
+.chat-input-area {
+    display: flex;
+    gap: 1rem;
+}
+
+.chat-send-button {
+    background-color: var(--primary-accent);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.chat-send-button:hover {
+    background-color: var(--secondary-accent);
+}
+
+.response-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+    justify-content: center;
+}
+
+/* Base style for small action buttons */
+.response-button {
+    background-color: transparent;
+    border: 1px solid var(--primary-accent);
+    color: var(--primary-accent);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.response-button:hover {
+    background-color: var(--primary-accent);
+    color: white;
+}
+
+/* Specific style for the stop button */
+.stop-speak-button {
+    border-color: #888;
+    color: #888;
+}
+
+.stop-speak-button:hover {
+    background-color: #888;
+    color: white;
+}
+
+
+/* --- Custom Style for File Upload Button --- */
+
+/* Hide the default file input */
+.file-input-hidden {
+    display: none;
+}
+
+/* Style the label to look like our other buttons */
+.file-input-label {
+    display: inline-block; /* Important for padding and alignment */
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    font-size: 1rem;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.2s;
+}
+
+.file-input-label:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* In HomePage.css */
+
+/* --- Styles for Camera Feature --- */
+.input-group {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+}
+
+.input-group .file-input-label {
+    flex-grow: 1;
+}
+
+.camera-button {
+    background-color: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 0.75rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.camera-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.camera-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.camera-view {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 90%;
+    max-width: 600px;
+}
+
+.camera-video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.camera-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* Add these styles to your App.css or relevant stylesheet */
+
+.camera-container {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #444;
+    border-radius: 8px;
+    padding: 1rem;
+    background-color: #2a2a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logout-button {
+  margin-left: 2rem;
+  padding: 0.5em 1.2em;
+  background: #e53935;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+}
+.logout-button:hover {
+  background: #b71c1c;
+}
+
+
+.camera-feed {
+    width: 100%;
+    max-width: 500px; /* Adjust as needed */
+    height: auto;
+    border-radius: 6px;
+    background-color: #000; /* Black background while loading */
+    border: 1px solid #555;
+}
+
+.camera-select {
+    width: 100%;
+    max-width: 500px;
+    padding: 0.5rem;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+}
+
+
+/* Add this to your main stylesheet */
+
+.language-selector-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
+    margin-bottom: 1rem; /* 16px */
+    margin-top: 1rem;
+}
+
+.language-selector-container label {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+.language-select {
+    padding: 0.5rem;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 4px;
+    flex-grow: 1; /* Allows the select to take up remaining space */
+}

@@ -1,0 +1,30 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  background: #2e2e40;
+  padding: 0.5em 1.5em;
+  gap: 1.5rem;
+}
+.navbar-logo {
+  font-weight: bold;
+  color: #fdec09;
+  margin-right: 2rem;
+}
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-link.active {
+  color: #ffce44;
+  border-bottom: 2px solid #ffc93c;
+}
+.nav-logout {
+  margin-left: auto;
+  color: #f44;
+  background: transparent;
+  border: 1px solid #f44;
+  border-radius: 4px;
+  padding: 0.4em 1em;
+  cursor: pointer;
+}
